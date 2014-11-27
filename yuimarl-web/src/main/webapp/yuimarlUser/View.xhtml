@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    template="/main/template.xhtml"
+    xmlns:jsf="http://xmlns.jcp.org/jsf"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="title">
+        <h:outputText value="#{bundle.ViewUserTitle}"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <div class="tablebg">
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.UserTitle_userNo}"/></td>
+                        <td style="width: 100%;"><h:outputText value="#{yuimarlUserController.selected.userNo}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.UserTitle_userID}"/></td>
+                        <td><h:outputText value="#{yuimarlUserController.selected.userId}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.UserTitle_partyNo}"/></td>
+                        <td><h:outputText value="#{yuimarlUserController.selected.party.partyNo}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.UserTitle_partyName}"/></td>
+                        <td><h:outputText value="#{yuimarlUserController.selected.party.name}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_registTime}"/></td>
+                        <td><h:outputText value="#{yuimarlUserController.selected.registTime}">
+                                <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss" timeZone="#{bundle.timeZone}" />
+                            </h:outputText></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_registUser}"/></td>
+                        <td><h:outputText value="#{yuimarlUserController.selected.registUser.userId} "/><h:outputText value="#{yuimarlUserController.selected.registUser.party.name}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_updateTime}"/></td>
+                        <td><h:outputText value="#{yuimarlUserController.selected.updateTime}">
+                                <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss" timeZone="#{bundle.timeZone}" />
+                            </h:outputText></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_updateUser}"/></td>
+                        <td><h:outputText value="#{yuimarlUserController.selected.updateUser.userId} "/><h:outputText value="#{yuimarlUserController.selected.updateUser.party.name}"/></td>
+                    </tr>
+                </table>
+            </div>
+            <p>
+                <h:commandLink action="List" value="${bundle.ListUserTitle}" />
+            </p>
+        </h:form>
+    </ui:define> 
+
+</ui:composition>

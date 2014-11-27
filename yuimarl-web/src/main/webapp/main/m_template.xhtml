@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title><ui:insert name="title" /></title>
+        <link rel="stylesheet" href="../jqm/jquery.mobile-1.4.3.min.css" />
+        <script type="text/javascript" src="../jquery/jquery.js"></script>
+        <script type="text/javascript" src="../jqm/jquery.mobile-1.4.3.min.js"></script>
+        <style>
+            p {
+                margin: 0 0 10px 0;
+            }
+
+            blockquote
+            {
+                border-style: solid;
+                border-color: #ccc;
+                border-width: 0;
+                margin: 13px 20px;
+                padding-left: 12px;
+                padding-right: 8px;
+                border-left-width: 5px;
+            }
+
+            .ui-field-contain>label {
+                margin: 0 2% 0 0;
+            }
+
+            .memoText {
+                margin: 0;
+                padding: 6px;
+                width: 90%;
+                height: 120px;
+                border: 1px solid lightgray;
+                background-color: #F8F8F8;
+                overflow: auto;
+            }
+        </style>
+    </h:head>
+    <c:choose>
+        <c:when test="#{fn:containsIgnoreCase(request.getHeader('User-Agent'), 'MSIE 6') ||
+                        fn:containsIgnoreCase(request.getHeader('User-Agent'), 'MSIE 7') ||
+                        fn:containsIgnoreCase(request.getHeader('User-Agent'), 'MSIE 8') ||
+                        fn:containsIgnoreCase(request.getHeader('User-Agent'), 'Firefox/3.2')}">
+            <h:body>
+                <h:panelGrid columns="1" id="browserCheck">        
+                    <h2>#{bundle.BrowserNotSupported}</h2><br />
+                    <strong>Browser Information: </strong>#{request.getHeader('User-Agent')}
+                </h:panelGrid>
+            </h:body>
+        </c:when>
+        <c:when test="#{loginController.logged == false}">
+            <h:body>
+                <ui:include src="login.xhtml" />
+            </h:body>
+        </c:when>
+        <c:otherwise>
+            <h:body>
+                <ui:insert name="content" />
+            </h:body>
+        </c:otherwise>
+    </c:choose>
+</html>

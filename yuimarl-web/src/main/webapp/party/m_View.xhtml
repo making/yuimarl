@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    template="/main/m_template.xhtml"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        <c:choose>
+            <c:when test="#{partyController.partyType == '2'}">
+                <h:outputText value="#{bundle.ViewOrganizationTitle}"/>
+            </c:when>
+            <c:when test="#{partyController.partyType == '3'}">
+                <h:outputText value="#{bundle.ViewCorporationTitle}"/>
+            </c:when>
+            <c:when test="#{partyController.partyType == '4'}">
+                <h:outputText value="#{bundle.ViewGoodsTitle}"/>
+            </c:when>
+            <c:otherwise>
+                <h:outputText value="#{bundle.ViewPersonTitle}"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form prependId="false">
+            <div data-role="page">
+                <div data-role="header">
+                    <h2>
+                        <c:choose>
+                            <c:when test="#{partyController.partyType == '2'}">
+                                <h:outputText value="#{bundle.ViewOrganizationTitle}"/>
+                            </c:when>
+                            <c:when test="#{partyController.partyType == '3'}">
+                                <h:outputText value="#{bundle.ViewCorporationTitle}"/>
+                            </c:when>
+                            <c:when test="#{partyController.partyType == '4'}">
+                                <h:outputText value="#{bundle.ViewGoodsTitle}"/>
+                            </c:when>
+                            <c:otherwise>
+                                <h:outputText value="#{bundle.ViewPersonTitle}"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </h2>
+                    <a href="" data-rel="back" data-icon="back" data-iconpos="notext" />
+                </div>
+
+                <div data-role="content">
+                    <div data-role="fieldcontain">
+                        <label for="partyNo"><h:outputText value="#{bundle.PartyTitle_partyNo}"/></label>
+                        <span id="partyNo"><h:outputText value="#{partyController.selected.partyNo}"/></span>
+                    </div>
+                    <c:choose>
+                        <c:when test="#{partyController.partyType == '1'}">
+                            <div data-role="fieldcontain">
+                                <label for="lastName"><h:outputText value="#{bundle.PartyTitle_lastName}"/></label>
+                                <span id="lastName"><h:outputText value="#{partyController.selected.lastName}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="firstName"><h:outputText value="#{bundle.PartyTitle_firstName}"/></label>
+                                <span id="firstName"><h:outputText value="#{partyController.selected.firstName}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="lastNameKana"><h:outputText value="#{bundle.PartyTitle_lastNameKana}"/></label>
+                                <span id="lastNameKana"><h:outputText value="#{partyController.selected.lastNameKana}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="firstNameKana"><h:outputText value="#{bundle.PartyTitle_firstNameKana}"/></label>
+                                <span id="firstNameKana"><h:outputText value="#{partyController.selected.firstNameKana}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="gender"><h:outputText value="#{bundle.PartyTitle_gender}"/></label>
+                                <span id="gender"><h:outputText value="#{partyController.selected.genderAsString}"/></span>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div data-role="fieldcontain">
+                                <label for="name"><h:outputText value="#{bundle.PartyTitle_name}"/></label>
+                                <span id="name"><h:outputText value="#{partyController.selected.name}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="nameKana"><h:outputText value="#{bundle.PartyTitle_nameKana}"/></label>
+                                <span id="nameKana"><h:outputText value="#{partyController.selected.nameKana}"/></span>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                    <div data-role="fieldcontain">
+                        <label for="zipCode"><h:outputText value="#{bundle.PartyTitle_zipCode}"/></label>
+                        <span id="zipCode"><h:outputText value="#{partyController.selected.address.zipCode}"/></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="prefecture"><h:outputText value="#{bundle.PartyTitle_prefecture}"/></label>
+                        <span id="prefecture"><h:outputText value="#{partyController.selected.address.prefectureName}"/></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="city"><h:outputText value="#{bundle.PartyTitle_city}"/></label>
+                        <span id="city"><h:outputText value="#{partyController.selected.address.city}"/></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="address1"><h:outputText value="#{bundle.PartyTitle_address1}"/></label>
+                        <span id="address1"><h:outputText value="#{partyController.selected.address.address1}"/></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="address2"><h:outputText value="#{bundle.PartyTitle_address2}"/></label>
+                        <span id="address2"><h:outputText value="#{partyController.selected.address.address2}"/></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="phoneNo"><h:outputText value="#{bundle.PartyTitle_phoneNo}"/></label>
+                        <span id="phoneNo"><h:outputText value="#{partyController.selected.phoneNo}"/></span>
+                    </div>
+                    <c:if test="#{partyController.partyType == '1'}" >
+                        <div data-role="fieldcontain">
+                            <label for="cellPhoneNumber"><h:outputText value="#{bundle.PartyTitle_cellPhoneNumber}"/></label>
+                            <span id="cellPhoneNumber"><h:outputText value="#{partyController.selected.cellPhoneNumber}"/></span>
+                        </div>
+                    </c:if>
+                    <div data-role="fieldcontain">
+                        <label for="faxNo"><h:outputText value="#{bundle.PartyTitle_faxNo}"/></label>
+                        <span id="faxNo"><h:outputText value="#{partyController.selected.faxNo}"/></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="mailAddress1"><h:outputText value="#{bundle.PartyTitle_mailAddress1}"/></label>
+                        <span id="mailAddress1"><h:outputText value="#{partyController.selected.mailAddress1}"/></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="mailAddress2"><h:outputText value="#{bundle.PartyTitle_mailAddress2}"/></label>
+                        <span id="mailAddress2"><h:outputText value="#{partyController.selected.mailAddress2}"/></span>
+                    </div>
+                    <c:choose>
+                        <c:when test="#{partyController.organization == true}">
+                            <c:if test="#{partyController.partyType == '3'}" >
+                                <div data-role="fieldcontain">
+                                    <label for="url"><h:outputText value="#{bundle.PartyTitle_url}"/></label>
+                                    <span id="url"><h:outputText value="#{partyController.selected.url}"/></span>
+                                </div>
+                            </c:if>
+                            <div data-role="fieldcontain">
+                                <label for="categoryName"><h:outputText value="#{bundle.PartyTitle_organizationCategory}"/></label>
+                                <span id="categoryName"><h:outputText value="#{partyController.selected.categoryName}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="personCount"><h:outputText value="#{bundle.PartyTitle_personCount}"/></label>
+                                <span id="personCount"><h:outputText value="#{partyController.selected.personCount}">
+                                        <f:convertNumber type="number" />
+                                    </h:outputText></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="establishDate"><h:outputText value="#{bundle.PartyTitle_establishDate}"/></label>
+                                <span id="establishDate"><h:outputText value="#{partyController.selected.startDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.startDateWareki}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="abolitionDate"><h:outputText value="#{bundle.PartyTitle_abolitionDate}"/></label>
+                                <span id="abolitionDate"><h:outputText value="#{partyController.selected.endDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.endDateWareki}"/></span>
+                            </div>
+                            <c:if test="#{partyController.partyType == '3'}" >
+                                <div data-role="fieldcontain">
+                                    <label for="capital"><h:outputText value="#{bundle.PartyTitle_capital}"/></label>
+                                    <span id="capital"><h:outputText value="#{partyController.selected.capital}">
+                                            <f:convertNumber type="number" />
+                                        </h:outputText></span>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <label for="accountMonth"><h:outputText value="#{bundle.PartyTitle_accountMonth}"/></label>
+                                    <span id="accountMonth"><h:outputText value="#{partyController.selected.accountMonth}">
+                                            <f:convertNumber type="number" />
+                                        </h:outputText></span>
+                                </div>
+                            </c:if>
+                        </c:when>
+                        <c:when test="#{partyController.partyType == '1'}">
+                            <div data-role="fieldcontain">
+                                <label for="birthDay"><h:outputText value="#{bundle.PartyTitle_birthDay}"/></label>
+                                <span id="birthDay"><h:outputText value="#{partyController.selected.startDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.startDateWareki}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="dateOfDeath"><h:outputText value="#{bundle.PartyTitle_dateOfDeath}"/></label>
+                                <span id="dateOfDeath"><h:outputText value="#{partyController.selected.endDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.endDateWareki}"/></span>
+                            </div>
+                        </c:when>
+                        <c:when test="#{partyController.partyType == '4'}">
+                            <div data-role="fieldcontain">
+                                <label for="category"><h:outputText value="#{bundle.PartyTitle_category}"/></label>
+                                <span id="category"><h:outputText value="#{partyController.selected.categoryName}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="startDate"><h:outputText value="#{bundle.PartyTitle_startDate}"/></label>
+                                <span id="startDate"><h:outputText value="#{partyController.selected.startDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.startDateWareki}"/></span>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="endDate"><h:outputText value="#{bundle.PartyTitle_endDate}"/></label>
+                                <span id="endDate"><h:outputText value="#{partyController.selected.endDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.endDateWareki}"/></span>
+                            </div>
+                        </c:when>
+                    </c:choose>
+                    <div data-role="fieldcontain">
+                        <label for="memo"><h:outputText value="#{bundle.PartyTitle_memo}"/></label>
+                        <div id="memo" class="memoText"><h:outputText value="#{partyController.selected.memo}" escape="false"/></div>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="registTime"><h:outputText value="#{bundle.PartyTitle_registTime}"/></label>
+                        <span id="registTime"><h:outputText value="#{partyController.selected.registTime}">
+                                <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss" timeZone="#{bundle.timeZone}" />
+                            </h:outputText></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="registUser"><h:outputText value="#{bundle.PartyTitle_registUser}"/></label>
+                        <span id="registUser"><h:outputText value="#{partyController.selected.registUser.userId} "/><h:outputText value="#{partyController.selected.registUser.party.name}"/></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="updateTime"><h:outputText value="#{bundle.PartyTitle_updateTime}"/></label>
+                        <span id="updateTime"><h:outputText value="#{partyController.selected.updateTime}">
+                                <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss" timeZone="#{bundle.timeZone}" />
+                            </h:outputText></span>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="updateUser"><h:outputText value="#{bundle.PartyTitle_updateUser}"/></label>
+                        <span id="updateUser"><h:outputText value="#{partyController.selected.updateUser.userId} "/><h:outputText value="#{partyController.selected.updateUser.party.name}"/></span>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define> 
+
+</ui:composition>

@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <meta charset="utf-8"/>
+        <title><ui:insert name="title" /></title>
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
+        <h:outputStylesheet library="css" name="stylesheet.css"/>
+        <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="../dynatree/skin/ui.dynatree.css" />
+        <style>
+            /* Style the CKEditor element to look like a textfield */
+            .cke_textarea_inline
+            {
+                padding: 10px;
+                height: 200px;
+                overflow: auto;
+
+                border: 1px solid gray;
+                -webkit-appearance: textfield;
+            }
+
+            .ui-datepicker, .ui-dialog {
+                font-size: 80%;
+            }
+
+            .ui-dialog-content {
+                padding: 0;
+                background-color: red;
+            }
+
+            p {
+                margin: 0 0 10px 0;
+            }
+
+            blockquote
+            {
+                border-style: solid;
+                border-color: #ccc;
+                border-width: 0;
+                margin: 13px 20px;
+                padding-left: 12px;
+                padding-right: 8px;
+                border-left-width: 5px;
+            }
+
+            .dialog-link {
+                margin: 0 10px 0 10px;
+                padding: 4px 10px 4px 10px;
+                text-decoration: none;
+                position: relative;
+            }
+
+            .memoText {
+                margin: 0;
+                padding: 6px;
+                width: 90%;
+                height: 120px;
+                border: 1px solid lightgray;
+                background-color: #F3F7FD;
+                overflow: auto;
+            }
+        </style>
+        <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="../jquery/jquery.js"></script>
+        <script type="text/javascript" src="../jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="../jquery/jquery.ui.datepicker-ja.js"></script>
+        <script type="text/javascript" src="../dynatree/jquery.dynatree.js"></script>
+        <script type="text/javascript" src="../js/party.js"></script>
+    </h:head>
+    <c:choose>
+        <c:when test="#{fn:containsIgnoreCase(request.getHeader('User-Agent'), 'MSIE 6') ||
+                        fn:containsIgnoreCase(request.getHeader('User-Agent'), 'MSIE 7') ||
+                        fn:containsIgnoreCase(request.getHeader('User-Agent'), 'MSIE 8') ||
+                        fn:containsIgnoreCase(request.getHeader('User-Agent'), 'Firefox/3.2')}">
+            <h:body>
+                <h:panelGrid columns="1" id="browserCheck">        
+                    <h2>#{bundle.BrowserNotSupported}</h2><br />
+                    <strong>Browser Information: </strong>#{request.getHeader('User-Agent')}
+                </h:panelGrid>
+            </h:body>
+        </c:when>
+        <c:when test="#{loginController.logged == false}">
+            <h:body>
+                <ui:include src="../main/login.xhtml" />
+            </h:body>
+        </c:when>
+        <c:otherwise>
+            <h:body class="body1">
+                <div id="top" class="top">
+                    <ui:include src="../main/header.xhtml" />
+                </div>
+                <div>
+                    <div id="left">
+                        <ui:include src="../main/sideMenu.xhtml" />
+                    </div>
+                    <div id="content" class="left_content">
+                        <h:messages showSummary="true" 
+                                    showDetail="false"
+                                    errorStyle="color: #d20005" 
+                                    infoStyle="color: blue"/>
+                        <ui:insert name="content" />
+                    </div>
+                </div>
+            </h:body>
+        </c:otherwise>
+    </c:choose>
+</html>

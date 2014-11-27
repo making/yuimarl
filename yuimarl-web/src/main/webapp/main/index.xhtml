@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    template="/main/template.xhtml"
+    xmlns:jsf="http://xmlns.jcp.org/jsf"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="title">
+        Yuimarl - Home
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <h2 class="menu_h2"><h:outputText value="#{bundle.MainMenuTitle}"/></h2>
+            <br />
+
+            <div><span id="messages"></span></div>
+            <div style="width: 300px;">
+                <c:if test="#{loginController.authPartyView}" >
+                    <div class="menuItem">
+                        <h3><h:outputText value="#{bundle.PartyTitle}"/></h3>
+                        <p><h:commandLink action="#{partyController.prepareList}" value="${bundle.ListPartyTitle}" /><br />
+                            <c:if test="#{loginController.authPartyCreate}" >
+                                <h:commandLink action="#{partyController.preparePersonCreate}" value="${bundle.CreatePersonTitle}" /><br />
+                                <h:commandLink action="#{partyController.prepareOrganizationCreate}" value="${bundle.CreateOrganizationTitle}" /><br />
+                                <h:commandLink action="#{partyController.prepareCorporationCreate}" value="${bundle.CreateCorporationTitle}" /><br />
+                                <h:commandLink action="#{partyController.prepareGoodsCreate}" value="${bundle.CreateGoodsTitle}" />
+                            </c:if>
+                        </p>
+                    </div>
+                    <br />
+                    <br />
+                </c:if>
+                <c:if test="#{loginController.authSystemMenuView}" >
+                    <div class="menuItem">
+                        <h3><h:outputText value="#{bundle.SystemManageTitle}"/></h3>
+                        <p>
+                            <c:if test="#{loginController.authUserView}" >
+                                <h:commandLink action="#{yuimarlUserController.prepareList}" value="${bundle.UserTitle}" /><br />
+                            </c:if>
+                            <c:if test="#{loginController.authGoodsCategoryView}" >
+                                <h:commandLink action="#{goodsCategoryController.prepareEdit}" value="${bundle.GoodsCategoryTitle}" /><br />
+                            </c:if>
+                        </p>
+                    </div>
+                    <br />
+                    <br />
+                </c:if>
+                <c:if test="#{loginController.authUserPassword}" >
+                    <h:commandLink action="#{changePasswordController.prepareEditPassword}" value="${bundle.UserPassword}" /><br />
+                    <br />
+                    <br />
+                </c:if>
+            </div>
+        </h:form>
+    </ui:define> 
+
+</ui:composition>

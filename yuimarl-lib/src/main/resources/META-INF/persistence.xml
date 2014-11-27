@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="yuimarlPU" transaction-type="JTA">
+    <jta-data-source>jdbc/yuimarl</jta-data-source>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="eclipselink.canonicalmodel.subpackage" value="one"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="testJavaDbPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>jp.yuimarl.entity.Corporation</class>
+    <class>jp.yuimarl.entity.Goods</class>
+    <class>jp.yuimarl.entity.GoodsCategory</class>
+    <class>jp.yuimarl.entity.Organization</class>
+    <class>jp.yuimarl.entity.OrganizationCategory</class>
+    <class>jp.yuimarl.entity.Party</class>
+    <class>jp.yuimarl.entity.Person</class>
+    <class>jp.yuimarl.entity.Prefecture</class>
+    <class>jp.yuimarl.entity.YuimarlUser</class>
+    <class>jp.yuimarl.entity.event.Eventview</class>
+    <class>jp.yuimarl.entity.event.Eventset</class>
+    <class>jp.yuimarl.entity.event.Eventviewset</class>
+    <class>jp.yuimarl.entity.event.Event</class>
+    <class>jp.yuimarl.entity.event.EventviewSpread</class>
+    <class>jp.yuimarl.entity.event.Daily</class>
+    <class>jp.yuimarl.entity.event.Weekly</class>
+    <class>jp.yuimarl.entity.event.Monthly</class>
+    <class>jp.yuimarl.entity.event.Yearly</class>
+    <class>jp.yuimarl.entity.event.Holiday</class>
+    <class>jp.yuimarl.entity.event.Task</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/yuimarl"/>
+      <property name="javax.persistence.jdbc.user" value="APP"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.password" value="APP"/>
+      <property name="eclipselink.canonicalmodel.subpackage" value="two"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="testMySqlPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>jp.yuimarl.entity.Corporation</class>
+    <class>jp.yuimarl.entity.Goods</class>
+    <class>jp.yuimarl.entity.GoodsCategory</class>
+    <class>jp.yuimarl.entity.Organization</class>
+    <class>jp.yuimarl.entity.OrganizationCategory</class>
+    <class>jp.yuimarl.entity.Party</class>
+    <class>jp.yuimarl.entity.Person</class>
+    <class>jp.yuimarl.entity.Prefecture</class>
+    <class>jp.yuimarl.entity.YuimarlUser</class>
+    <class>jp.yuimarl.entity.event.Eventview</class>
+    <class>jp.yuimarl.entity.event.Eventset</class>
+    <class>jp.yuimarl.entity.event.Eventviewset</class>
+    <class>jp.yuimarl.entity.event.Event</class>
+    <class>jp.yuimarl.entity.event.EventviewSpread</class>
+    <class>jp.yuimarl.entity.event.Daily</class>
+    <class>jp.yuimarl.entity.event.Weekly</class>
+    <class>jp.yuimarl.entity.event.Monthly</class>
+    <class>jp.yuimarl.entity.event.Yearly</class>
+    <class>jp.yuimarl.entity.event.Holiday</class>
+    <class>jp.yuimarl.entity.event.Task</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/yuimarl?characterEncoding=utf8"/>
+      <!-- property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.31:3306/yuimarl?characterEncoding=utf8"/ -->
+      <property name="javax.persistence.jdbc.user" value="yuimarluser"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="yuimarlpass"/>
+      <property name="eclipselink.canonicalmodel.subpackage" value="three"/>
+    </properties>
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    template="/main/m_template.xhtml"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        <h:outputText value="#{bundle.PartyTitle} #{bundle.ListPartyTitle}"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <div data-role="page">
+            <h:form prependId="false">
+                <div data-role="header">
+                    <h2><h:outputText value="#{bundle.PartyTitle} #{bundle.ListPartyTitle}"/></h2>
+                    <h:commandLink action="/party/m_Search" p:data-icon="back" p:data-iconpos="notext" />
+                </div>
+            </h:form>
+
+            <div data-role="content">
+                <h:form prependId="false">
+                    <ul data-role="listview">
+                        <c:forEach var="item" items="#{partyController.mPartyList}" varStatus="status">
+                            <li><h:commandLink action="#{partyController.prepareMView}" onclick="setLineNo(${status.index})">
+                                    <h3><h:outputText value="#{item.partyNo}"/>/<h:outputText value="#{item.name}"/></h3>
+                                    <p><h:outputText value="#{item.address.prefectureName}"/><h:outputText value="#{item.address.city}"/>/<h:outputText value="#{item.partyTypeName}"/></p>
+                                </h:commandLink></li>
+                        </c:forEach>
+                    </ul>
+                    <c:if test="#{partyController.pagination.hasPluralPage}" >
+                        <p><br/>
+                            <h:commandLink action="#{partyController.pageTopM}" value="&lt;&lt;" rendered="#{partyController.pagination.hasPreviousPage}" p:data-role="button" p:data-inline="true"/>
+                            <h:commandLink action="#{partyController.pagePreviousM}" value="&lt;" rendered="#{partyController.pagination.hasPreviousPage}" p:data-role="button" p:data-inline="true"/>
+                            <h:commandLink action="#{partyController.pagePreviousM}" value="#{partyController.pagination.prevPageNo}" rendered="#{partyController.pagination.hasPreviousPage}" p:data-role="button" p:data-inline="true"/>
+                            <a href="#" data-role="button" data-inline="true" data-theme="b"><h:outputText value="#{partyController.pagination.curPageNo}"/></a>
+                            <h:commandLink action="#{partyController.pageNextM}" value="#{partyController.pagination.nextPageNo}" rendered="#{partyController.pagination.hasNextPage}" p:data-role="button" p:data-inline="true"/>
+                            <h:commandLink action="#{partyController.pageNextM}" value="&gt;" rendered="#{partyController.pagination.hasNextPage}" p:data-role="button" p:data-inline="true"/>
+                            <h:commandLink action="#{partyController.pageLastM}" value="&gt;&gt;" rendered="#{partyController.pagination.hasNextPage}" p:data-role="button" p:data-inline="true"/>
+                        </p>
+                    </c:if>
+                    <h:inputHidden id="lineNo" value="#{partyController.lineNo}"/>
+                    <script>
+                        function setLineNo(line) {
+                            document.getElementById("lineNo").value = line;
+                            return true;
+                        }
+                    </script>
+                </h:form>
+            </div>
+        </div>
+    </ui:define> 
+
+</ui:composition>

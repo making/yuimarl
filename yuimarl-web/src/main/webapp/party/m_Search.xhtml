@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    template="/main/m_template.xhtml"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        <h:outputText value="#{bundle.PartyTitle} #{bundle.ListPartyTitle}"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form prependId="false">
+            <div data-role="page">
+                <div data-role="header">
+                    <h2><h:outputText value="#{bundle.PartyTitle} #{bundle.ListPartyTitle}"/></h2>
+                    <h:commandLink action="/main/m_index" p:data-icon="home" p:data-iconpos="notext" />
+                </div>
+
+                <div data-role="content">
+                    <div data-role="fieldcontain">
+                        <label for="searchPartyNo"><h:outputText value="#{bundle.PartyTitle_partyNo}"/></label> 
+                        <h:inputText id="searchPartyNo" p:type="number" maxlength="10" value="#{partyController.searchPartyNo}"/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="searchPartyName"><h:outputText value="#{bundle.PartyTitle_name}"/></label>
+                        <h:inputText id="searchPartyName" maxlength="20" value="#{partyController.searchPartyName}"/>
+                    </div>
+                    <div data-role="fieldcontain"> 
+                        <fieldset data-role="controlgroup" data-type="horizontal"> 
+                            <legend><h:outputText value="#{bundle.ListPartyTitle_partyType}"/></legend>
+                            <h:selectBooleanCheckbox id="partyType1" binding="#{partyController.partyType1}"/>
+                            <h:outputLabel for="partyType1" value="人" />
+                            <h:selectBooleanCheckbox id="partyType2" binding="#{partyController.partyType2}"/>
+                            <h:outputLabel for="partyType2" value="組織" />
+                            <h:selectBooleanCheckbox id="partyType3" binding="#{partyController.partyType3}"/>
+                            <h:outputLabel for="partyType3" value="法人" />
+                            <h:selectBooleanCheckbox id="partyType4" binding="#{partyController.partyType4}"/>
+                            <h:outputLabel for="partyType4" value="物品" />
+                        </fieldset> 
+                    </div>
+                    <h:commandButton value="#{bundle.SearchLink}" action="#{partyController.searchM}"/>
+                </div>
+            </div>
+        </h:form>
+    </ui:define> 
+
+</ui:composition>

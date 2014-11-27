@@ -1,0 +1,92 @@
+/**
+ * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
+ *
+ * You may not modify, use, reproduce, or distribute this software except in
+ * compliance with  the terms of the License at:
+ * http://java.net/projects/javaeetutorial/pages/BerkeleyLicense
+ */
+#top {
+    position: relative;
+    margin:0;
+    padding: 0px;
+    color: #ffffff;
+    background-color: #3672a4;
+    height: 70px;
+}
+
+#bottom {
+    position: relative;
+    background-color: #e5e5e5;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+#left {
+    float: left;
+    width: 140px;
+    padding: 0;
+    font-size: 11pt;
+    border-top: 1pt solid #5692c4;
+}
+
+#right {
+    float: right;
+    background-color: #6f6f6f;
+    color: white;
+    padding: 5px;
+    width: 150px;
+}
+
+.center_content {
+    position: relative;
+    background-color: white;
+    padding: 5px;
+}
+
+.left_content {
+    margin: 0px 0 0 140px;
+    padding: 10px;
+}
+
+.right_content {
+    background-color: white;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+    color: red;
+    text-decoration : underline;
+}
+
+#left a {
+    display: block;
+    padding: 8px 2px 8px 3px;
+    line-height: 100%;
+    text-decoration: none;
+    border-bottom: 1pt solid #5692c4;
+}
+
+#left a:link, #left a:visited {
+    color: #eeeeee;
+}
+
+#left a:link:hover, #left a:visited:hover {
+    color: red;
+}
+.leftfocus {
+    display: block;
+    padding: 8px 2px 8px 3px;
+    color: #eeeeee;
+    line-height: 100%;
+    text-decoration: none;
+    border-bottom: 1pt solid #5692c4;
+}
+.leftgroup {
+    background-color: #336c9b;
+}

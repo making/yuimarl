@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:form>
+        <h:commandLink action="/main/index" value="${bundle.MainMenuTitle}" />
+        <c:if test="#{loginController.authPartyView}" >
+            <div class="leftfocus"><h:outputText value="#{bundle.PartyTitle}"/></div>
+            <h:commandLink action="#{partyController.prepareList}" value=" ・ ${bundle.ListPartyTitle}" />
+            <c:if test="#{loginController.authPartyCreate}" >
+                <h:commandLink action="#{partyController.preparePersonCreate}" value=" ・ ${bundle.CreatePersonTitle}" />
+                <h:commandLink action="#{partyController.prepareOrganizationCreate}" value=" ・ ${bundle.CreateOrganizationTitle}" />
+                <h:commandLink action="#{partyController.prepareCorporationCreate}" value=" ・ ${bundle.CreateCorporationTitle}" />
+                <h:commandLink action="#{partyController.prepareGoodsCreate}" value=" ・ ${bundle.CreateGoodsTitle}" />
+            </c:if>
+        </c:if>
+    </h:form>
+</ui:composition>

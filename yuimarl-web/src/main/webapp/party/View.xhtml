@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    template="templateEditor.xhtml"
+    xmlns:jsf="http://xmlns.jcp.org/jsf"
+    xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="title">
+        <c:choose>
+            <c:when test="#{partyController.partyType == '2'}">
+                <h:outputText value="#{bundle.ViewOrganizationTitle}"/>
+            </c:when>
+            <c:when test="#{partyController.partyType == '3'}">
+                <h:outputText value="#{bundle.ViewCorporationTitle}"/>
+            </c:when>
+            <c:when test="#{partyController.partyType == '4'}">
+                <h:outputText value="#{bundle.ViewGoodsTitle}"/>
+            </c:when>
+            <c:otherwise>
+                <h:outputText value="#{bundle.ViewPersonTitle}"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <div class="tablebg">
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_partyNo}"/></td>
+                        <td style="width: 100%;"><h:outputText value="#{partyController.selected.partyNo}"/></td>
+                    </tr>
+                    <c:choose>
+                        <c:when test="#{partyController.partyType == '1'}">
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_lastName}"/></td>
+                                <td><h:outputText value="#{partyController.selected.lastName}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_firstName}"/></td>
+                                <td><h:outputText value="#{partyController.selected.firstName}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_lastNameKana}"/></td>
+                                <td><h:outputText value="#{partyController.selected.lastNameKana}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_firstNameKana}"/></td>
+                                <td><h:outputText value="#{partyController.selected.firstNameKana}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_gender}"/></td>
+                                <td><h:outputText value="#{partyController.selected.genderAsString}"/>
+                                </td>
+                            </tr>
+                        </c:when>
+                        <c:otherwise>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_name}"/></td>
+                                <td><h:outputText value="#{partyController.selected.name}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_nameKana}"/></td>
+                                <td><h:outputText value="#{partyController.selected.nameKana}"/></td>
+                            </tr>
+                        </c:otherwise>
+                    </c:choose>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_zipCode}"/></td>
+                        <td><h:outputText value="#{partyController.selected.address.zipCode}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_prefecture}"/></td>
+                        <td><h:outputText value="#{partyController.selected.address.prefectureName}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_city}"/></td>
+                        <td><h:outputText value="#{partyController.selected.address.city}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_address1}"/></td>
+                        <td><h:outputText value="#{partyController.selected.address.address1}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_address2}"/></td>
+                        <td><h:outputText value="#{partyController.selected.address.address2}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_phoneNo}"/></td>
+                        <td><h:outputText value="#{partyController.selected.phoneNo}"/></td>
+                    </tr>
+                    <c:if test="#{partyController.partyType == '1'}" >
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_cellPhoneNumber}"/></td>
+                        <td><h:outputText value="#{partyController.selected.cellPhoneNumber}"/></td>
+                    </tr>
+                    </c:if>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_faxNo}"/></td>
+                        <td><h:outputText value="#{partyController.selected.faxNo}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_mailAddress1}"/></td>
+                        <td><h:outputText value="#{partyController.selected.mailAddress1}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_mailAddress2}"/></td>
+                        <td><h:outputText value="#{partyController.selected.mailAddress2}"/></td>
+                    </tr>
+                    <c:choose>
+                        <c:when test="#{partyController.organization == true}">
+                            <c:if test="#{partyController.partyType == '3'}" >
+                                <tr>
+                                    <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_url}"/></td>
+                                    <td><h:outputText value="#{partyController.selected.url}"/></td>
+                                </tr>
+                            </c:if>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_organizationCategory}"/></td>
+                                <td><h:outputText value="#{partyController.selected.categoryName}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_personCount}"/></td>
+                                <td><h:outputText value="#{partyController.selected.personCount}">
+                                        <f:convertNumber type="number" />
+                                    </h:outputText></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_establishDate}"/></td>
+                                <td><h:outputText value="#{partyController.selected.startDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.startDateWareki}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_abolitionDate}"/></td>
+                                <td><h:outputText value="#{partyController.selected.endDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.endDateWareki}"/></td>
+                            </tr>
+                            <c:if test="#{partyController.partyType == '3'}" >
+                                <tr>
+                                    <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_capital}"/></td>
+                                    <td><h:outputText value="#{partyController.selected.capital}">
+                                            <f:convertNumber type="number" />
+                                        </h:outputText></td>
+                                </tr>
+                                <tr>
+                                    <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_accountMonth}"/></td>
+                                    <td><h:outputText value="#{partyController.selected.accountMonth}">
+                                            <f:convertNumber type="number" />
+                                        </h:outputText></td>
+                                </tr>
+                            </c:if>
+                        </c:when>
+                        <c:when test="#{partyController.partyType == '1'}">
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_birthDay}"/></td>
+                                <td><h:outputText value="#{partyController.selected.startDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.startDateWareki}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_dateOfDeath}"/></td>
+                                <td><h:outputText value="#{partyController.selected.endDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.endDateWareki}"/></td>
+                            </tr>
+                        </c:when>
+                        <c:when test="#{partyController.partyType == '4'}">
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_category}"/></td>
+                                <td><h:outputText value="#{partyController.selected.categoryName}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_startDate}"/></td>
+                                <td><h:outputText value="#{partyController.selected.startDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.startDateWareki}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_endDate}"/></td>
+                                <td><h:outputText value="#{partyController.selected.endDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" timeZone="#{bundle.timeZone}" />
+                                    </h:outputText> <h:outputText value="  #{partyController.selected.endDateWareki}"/></td>
+                            </tr>
+                        </c:when>
+                    </c:choose>
+                    <tr>
+                        <td class="cellTitle"><h:outputText value="#{bundle.PartyTitle_memo}"/></td>
+                        <td><div id="memo-2" class="memoText"><h:outputText value="#{partyController.selected.memo}" escape="false"/></div></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_registTime}"/></td>
+                        <td><h:outputText value="#{partyController.selected.registTime}">
+                                <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss" timeZone="#{bundle.timeZone}" />
+                            </h:outputText></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_registUser}"/></td>
+                        <td><h:outputText value="#{partyController.selected.registUser.userId} "/><h:outputText value="#{partyController.selected.registUser.party.name}"/></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_updateTime}"/></td>
+                        <td><h:outputText value="#{partyController.selected.updateTime}">
+                                <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss" timeZone="#{bundle.timeZone}" />
+                            </h:outputText></td>
+                    </tr>
+                    <tr>
+                        <td class="cellLabel"><h:outputText value="#{bundle.PartyTitle_updateUser}"/></td>
+                        <td><h:outputText value="#{partyController.selected.updateUser.userId} "/><h:outputText value="#{partyController.selected.updateUser.party.name}"/></td>
+                    </tr>
+                </table>
+            </div>
+        </h:form>
+    </ui:define> 
+
+</ui:composition>

@@ -1,0 +1,226 @@
+/**
+ * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
+ *
+ * You may not modify, use, reproduce, or distribute this software except in
+ * compliance with  the terms of the License at:
+ * http://java.net/projects/javaeetutorial/pages/BerkeleyLicense
+ */
+body {
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.input1 {
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    font-size:14px;
+    width:200px;
+    min-height:24px;
+}
+
+a:link, a:visited {
+    color:blue;
+}
+
+a:hover {
+    color:red;
+}
+
+output {
+    font-size:14px;
+}
+
+.body1 {
+    margin:0;
+    background-color: #ffffff;
+    background-image: url(#{resource['img/back.gif']});
+    background-repeat: repeat-y;
+}
+
+.h_logo {
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    width: 200px;
+    height: 60px;
+    background-image: url(#{resource['img/logo.gif']});
+    background-repeat: no-repeat;
+}
+
+.h_right {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 70px;
+    width: 800px;
+}
+
+.h_user {
+    position: absolute;
+    bottom: 8px;
+    right: 120px;
+}
+
+.h_logout {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+.h_logout a:visited {
+    color: #AFAFAF;
+}
+.h_logout a:link {
+    color: #AFAFAF;
+}
+.h_logout a:hover {
+    color: red;
+}
+
+.menu_h2 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  18px;
+    font-weight: bold;
+    margin: 8px 0px;
+    padding: 0px;
+    color: #D20005;
+}
+
+.menuItem {
+    border: 2px solid slategray;
+    color: #000000;
+    background-color: #f8f8f8;
+}
+
+.menuItem h3 {
+    margin: 0;
+    padding: 5px;
+    color: white;
+    background-color: slategray;
+}
+
+.menuItem p {
+    margin: 0;
+    padding: 1em;
+}
+
+.menuItem a:visited {
+    color: #3672a4;
+}
+.menuItem a:link {
+    color: #3672a4;
+}
+.menuItem a:hover {
+    color: red;
+}
+.tablebg {
+    background-color: #EEF3FB;
+}
+
+table {
+    empty-cells: show;
+    border:0px;
+}
+
+form.jsfcrud_list_form th, td th {
+    font-size: small;
+    color: #4e6a71;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #90b4bd;
+    border-bottom-color: #90b4bd;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 3px 4px 2px;
+    background-color: #b2d5d6;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: dotted;
+    border-bottom-style: dotted;
+    border-left-style: dotted;
+    border-right-style: dotted;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #b2d5d6;
+    border-right-color: #b2d5d6;
+    vertical-align: baseline;
+    padding: 3px 4px 2px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    /*color: #4e6a71;*/
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    /*color: #4e6a71;*/
+}
+
+.commandButtons {
+    margin-left: 0px;
+    padding: 3px 15px;
+}
+
+.commandButtons li {
+    list-style: none;
+    display: inline;
+    /*    border-left: 1px solid #dddddd;*/
+}
+
+.cellTitle {
+    padding-top: 6px;
+    padding-right: 8px;
+    white-space: nowrap;
+}
+
+.cellLabel {
+    padding-right: 8px;
+    white-space: nowrap;
+}
+
+table.tb1 {
+    border-collapse: collapse;
+    margin-left: 4px;
+    margin-bottom: 22px;
+}
+
+table.tb1 td {
+    border: 1px solid;
+    padding: 6px 8px;
+    letter-spacing: 1px;
+}
+
+.searchBox {
+    background-color: #F2F2F2;
+    border-color: #B0B0B0;
+    border-style: solid;
+    border-width: 1px;
+    padding: 4px;
+}
+
+table.searchBoxTb td {
+    border-color: #F2F2F2;
+}
